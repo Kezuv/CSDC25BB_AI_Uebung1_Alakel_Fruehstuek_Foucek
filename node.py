@@ -12,7 +12,7 @@ class Node:
         self.g = init_cost
 
     def expand(self, heuristic):
-        nextOptions = self.curPuzzle.expension()
+        nextOptions = self.curPuzzle.extend()
         for node in nextOptions:
             self.childNodes.append(Node(node, self.g+1))
             self.h = heuristic.calculate_heuristic()
