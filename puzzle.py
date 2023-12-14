@@ -18,6 +18,10 @@ class Puzzle:
         random_puzzle = [numbers[i:i + 3] for i in range(0, 9, 3)]
         return Puzzle(random_puzzle)
 
+    @staticmethod
+    def generate_goal_puzzle():
+        return Puzzle([[1, 2, 3], [4, 5, 6], [7, 8, 0]])
+
     # return up to 4 leafs for Tree with new permutations from the puzzle
     def extend(self):
         newLeafs = []
@@ -51,6 +55,14 @@ class Puzzle:
             for j, value in enumerate(row):
                 if value == 0:
                     return i, j
+
+    def count_misplaced_tiles(self, other_puzzle):
+        misplaced_count = 0
+        for i in range(len(self.board)):
+            for j in range(len(self.board[i])):
+                if self.board[i][j] != other_puzzle.board[i][j]:
+                    misplaced_count += 1
+        return misplaced_count
 
     # following switch the tile with "0" with their neighbours and return a new Puzzle.
     # If the move is not possible return = none

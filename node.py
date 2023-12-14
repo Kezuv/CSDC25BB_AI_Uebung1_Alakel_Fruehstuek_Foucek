@@ -3,7 +3,7 @@ class Node:
     def __init__(self, init_puzzle, init_cost, heuristic):
         self.curPuzzle = init_puzzle
         self.g = init_cost
-        self.h = heuristic.calculate_heuristic(0, 0)
+        self.h = heuristic.calculate_heuristic(init_puzzle)
         self.childNodes = []
 
     def __lt__(self, other):
@@ -13,7 +13,6 @@ class Node:
         next_options = self.curPuzzle.extend()
         for puzzle in next_options:
             new_leaf_node = Node(puzzle, self.g+1, heuristic)
-            new_leaf_node.h = heuristic.calculate_heuristic(0, 0)
             self.childNodes.append(new_leaf_node)
         return self.childNodes
 

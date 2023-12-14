@@ -1,13 +1,26 @@
 class Heuristic:
-    def calculate_heuristic(self, cur, goal):
+    def calculate_heuristic(self, cur):
         return 0
 
 
+class Hammingway(Heuristic):
+    def __init__(self, goal_puzzle):
+        self.goal = goal_puzzle
+
+    def calculate_heuristic(self, cur):
+        return self.goal.count_misplaced_tiles(cur)
+
 class Manhatten(Heuristic):
-    def calculate_heuristic(self, cur, goal):
-        return 8
+    def __init__(self, goal_puzzle):
+        self.goal = goal_puzzle
+
+    def calculate_heuristic(self, cur):
+        return 1
 
 
 class Euklid(Heuristic):
-    def calculate_heuristic(self, cur, goal):
+    def __init__(self, goal_puzzle):
+        self.goal = goal_puzzle
+
+    def calculate_heuristic(self, cur):
         return 2

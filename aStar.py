@@ -15,7 +15,8 @@ class AStar:
 
         while not self.queue.is_empty():
             current_node = self.queue.get()
-            current_node.curPuzzle.display()
+            # current_node.curPuzzle.display()
+            # print(current_node.h)
             if current_node.h == 0:
                 break
             else:
