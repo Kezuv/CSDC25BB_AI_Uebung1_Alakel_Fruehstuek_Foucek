@@ -5,7 +5,7 @@ class Heuristic:
 
 class Manhatten(Heuristic):
     def calculate_heuristic(self, cur, goal):
-        return 1
+        return 8
 
 
 class Euklid(Heuristic):

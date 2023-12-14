@@ -1,21 +1,19 @@
-import puzzle as p
-
-
 class Node:
-    childNodes = []
-    curPuzzle = p.Puzzle
-    g = 0
-    h = 0
 
-    def __init__(self, init_puzzle, init_cost):
+    def __init__(self, init_puzzle, init_cost, heuristic):
         self.curPuzzle = init_puzzle
         self.g = init_cost
+        self.h = heuristic.calculate_heuristic(0, 0)
+        self.childNodes = []
+
+    def __lt__(self, other):
+        return (self.g + self.h) < (other.g + other.h)
 
     def expand(self, heuristic):
-        nextOptions = self.curPuzzle.extend()
-        for node in nextOptions:
-            self.childNodes.append(Node(node, self.g+1))
-            self.h = heuristic.calculate_heuristic()
-
+        next_options = self.curPuzzle.extend()
+        for puzzle in next_options:
+            new_leaf_node = Node(puzzle, self.g+1, heuristic)
+            new_leaf_node.h = heuristic.calculate_heuristic(0, 0)
+            self.childNodes.append(new_leaf_node)
         return self.childNodes
 

@@ -7,6 +7,9 @@ class Puzzle:
     def __init__(self, initial_state):
         self.board = initial_state
 
+    def __iter__(self):
+        return iter(self.board)
+
     # generates a random puzzle with values from 0 to 9
     @staticmethod
     def generate_random_puzzle():
