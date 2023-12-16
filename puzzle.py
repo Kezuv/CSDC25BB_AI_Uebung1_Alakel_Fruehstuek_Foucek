@@ -23,23 +23,23 @@ class Puzzle:
         return Puzzle([[1, 2, 3], [4, 5, 6], [7, 8, 0]])
 
     # return up to 4 leafs for Tree with new permutations from the puzzle
-    def extend(self):
+    def extend(self, previous_puzzles):
         newLeafs = []
 
         up_puzzle = self.move_up()
-        if up_puzzle is not None:
+        if up_puzzle is not None and up_puzzle not in previous_puzzles:
             newLeafs.append(up_puzzle)
 
         down_puzzle = self.move_down()
-        if down_puzzle is not None:
+        if down_puzzle is not None and down_puzzle not in previous_puzzles:
             newLeafs.append(down_puzzle)
 
         left_puzzle = self.move_left()
-        if left_puzzle is not None:
+        if left_puzzle is not None and left_puzzle not in previous_puzzles:
             newLeafs.append(left_puzzle)
 
         right_puzzle = self.move_right()
-        if right_puzzle is not None:
+        if right_puzzle is not None and right_puzzle not in previous_puzzles:
             newLeafs.append(right_puzzle)
 
         return newLeafs
@@ -56,13 +56,11 @@ class Puzzle:
                 if value == 0:
                     return i, j
 
-    def count_misplaced_tiles(self, other_puzzle):
-        misplaced_count = 0
+    def find_position(self, value):
         for i in range(len(self.board)):
             for j in range(len(self.board[i])):
-                if self.board[i][j] != other_puzzle.board[i][j]:
-                    misplaced_count += 1
-        return misplaced_count
+                if self.board[i][j] == value:
+                    return i, j
 
     # following switch the tile with "0" with their neighbours and return a new Puzzle.
     # If the move is not possible return = none
