@@ -1,4 +1,4 @@
-import q
+import priorityQueue
 from node import Node
 
 
@@ -7,7 +7,7 @@ class AStar:
     def __init__(self):
         self.steps = 0
         self.time = 0
-        self.queue = q.PriorityQueue()
+        self.queue = priorityQueue.PriorityQueue()
 
     def start(self, init_puzzle, heuristic):
         init_node = Node(init_puzzle, 0, heuristic.calculate_heuristic(init_puzzle))

@@ -107,13 +107,3 @@ class Puzzle:
             return tmp_puzzle
         else:
             return None
-
-
-# randomPuzzle = Puzzle([[1, 5, 3], [4, 0, 7], [6, 8, 2]])
-# randomPuzzle.display()
-# print('---------')
-
-# listOfPuzzle = randomPuzzle.extend()
-# for i in listOfPuzzle:
-#     i.display()
-#     print('---------')
