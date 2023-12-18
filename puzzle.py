@@ -11,6 +11,10 @@ class Puzzle:
     def __iter__(self):
         return iter(self.board)
 
+    # made puzzles comparable
+    def __eq__(self, other):
+        return self.board == other.board
+
     # generates a random puzzle with values from 0 to 9
     @staticmethod
     def generate_random_puzzle():
@@ -23,6 +27,29 @@ class Puzzle:
     @staticmethod
     def generate_goal_puzzle():
         return Puzzle([[1, 2, 3], [4, 5, 6], [7, 8, 0]])
+
+        # This function returns true
+        # if given 8 puzzle is solvable.
+
+    def is_solvable(self):
+
+        # Count inversions in given 8 puzzle
+        inv_count = self.get_inv_count()
+
+        # return true if inversion count is even.
+        return inv_count % 2 == 0
+
+    # A utility function to count
+    # inversions in given array 'arr[]'
+    def get_inv_count(self):
+        inv_count = 0
+        flatten_puzzle = [value for row in self.board for value in row]
+
+        for i in range(0, 9):
+            for j in range(i + 1, 9):
+                if flatten_puzzle[j] != 0 and flatten_puzzle[i] != 0 and flatten_puzzle[i] > flatten_puzzle[j]:
+                    inv_count += 1
+        return inv_count
 
     # return up to 4 leafs for the tree with new permutations from the puzzle which where not created before
     def extend(self, previous_puzzles):

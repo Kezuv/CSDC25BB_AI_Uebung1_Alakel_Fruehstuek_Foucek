@@ -23,8 +23,8 @@ class AStar:
             current_node = self.queue.get()
 
             # print stats from that node
-            print('Heurisitc:' + str(current_node.h) + '________ Cost: ' + str(current_node.g) + '_________ Sum:' + str(
-                current_node.h + current_node.g))
+            # print('Heurisitc:' + str(current_node.h) + '________ Cost: ' + str(current_node.g) + '_________ Sum:' + str(
+            #     current_node.h + current_node.g))
 
             # base case - if h == 0, we reached the goal-puzzle
             if current_node.h == 0:
