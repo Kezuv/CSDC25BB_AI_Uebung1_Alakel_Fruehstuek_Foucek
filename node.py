@@ -11,11 +11,10 @@ class Node:
         return (self.g + self.h) < (other.g + other.h)
 
     # expand the node with new leaf-nodes that contains all different possible puzzle-boards from the current one.
-    def expand(self, heuristic, previous_puzzles):
-        next_options = self.curPuzzle.extend(previous_puzzles)
+    def expand(self, heuristic):
+        next_options = self.curPuzzle.extend()
         for puzzle in next_options:
             # create new nodes for each new puzzle with the calculated heuristic distance and increase g by 1
             new_leaf_node = Node(puzzle, self.g+1, heuristic.calculate_heuristic(puzzle))
             self.childNodes.append(new_leaf_node)
-            previous_puzzles.append(puzzle)
         return self.childNodes

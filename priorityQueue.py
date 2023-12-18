@@ -8,12 +8,12 @@ class PriorityQueue:
         return len(self.elements) == 0
 
     # put items (nodes) with their priority (total cost) in the correct index
-    def put(self, node, priority):
-        entry = (node, priority)
+    def put(self, node, priority, heuristic_value):
+        entry = (node, priority, heuristic_value)
         index = 0
 
         # find the position where the element should be inserted
-        while index < len(self.elements) and priority > self.elements[index][1]:
+        while index < len(self.elements) and (priority > self.elements[index][1] or heuristic_value > self.elements[index][2]):
             index += 1
 
         # Insert the element at the found position

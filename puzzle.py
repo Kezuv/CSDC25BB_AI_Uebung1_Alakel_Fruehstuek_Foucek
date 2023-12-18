@@ -17,8 +17,9 @@ class Puzzle:
 
     # generates a random puzzle with values from 0 to 9
     @staticmethod
-    def generate_random_puzzle():
+    def generate_random_puzzle(seed=None):
         numbers = list(range(9))
+        random.seed(seed)
         random.shuffle(numbers)
         random_puzzle = [numbers[i:i + 3] for i in range(0, 9, 3)]
         return Puzzle(random_puzzle)
@@ -52,24 +53,24 @@ class Puzzle:
         return inv_count
 
     # return up to 4 leafs for the tree with new permutations from the puzzle which where not created before
-    def extend(self, previous_puzzles):
+    def extend(self):
         new_leafs = []
 
 
         up_puzzle = self.move_up()
-        if up_puzzle is not None and up_puzzle not in previous_puzzles:
+        if up_puzzle is not None and up_puzzle:
             new_leafs.append(up_puzzle)
 
         down_puzzle = self.move_down()
-        if down_puzzle is not None and down_puzzle not in previous_puzzles:
+        if down_puzzle is not None and down_puzzle:
             new_leafs.append(down_puzzle)
 
         left_puzzle = self.move_left()
-        if left_puzzle is not None and left_puzzle not in previous_puzzles:
+        if left_puzzle is not None and left_puzzle:
             new_leafs.append(left_puzzle)
 
         right_puzzle = self.move_right()
-        if right_puzzle is not None and right_puzzle not in previous_puzzles:
+        if right_puzzle is not None and right_puzzle:
             new_leafs.append(right_puzzle)
 
         return new_leafs

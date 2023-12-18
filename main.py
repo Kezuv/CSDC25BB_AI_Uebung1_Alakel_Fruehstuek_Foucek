@@ -2,7 +2,7 @@ import aStar
 from heuristic import Manhattan, Hamingway, Hamingway_WithBlank
 from puzzle import Puzzle
 
-puzzleCnt = 50
+puzzleCnt = 10
 solved_puzzles = 0
 goal_puzzle = Puzzle.generate_goal_puzzle()
 # goal_puzzle.display()
@@ -22,7 +22,7 @@ for init_puzzle in list_init_puzzles:
     a_star = aStar.AStar()
     puzzle_count += 1
     manhattan_time += a_star.start(init_puzzle, Manhattan(goal_puzzle))[1]
-    print(str(puzzle_count) + ' -- ' + 'Manhattan: ' + str(manhattan_time))
+    print(str(puzzle_count) + ' -- ' + 'Manhattan:')
     #print("{} -- Manhattan: {}".format(puzzle_count,init_puzzle))
 
 puzzle_count = 0
@@ -32,7 +32,7 @@ for init_puzzle in list_init_puzzles:
     a_star = aStar.AStar()
     hamming_time += a_star.start(init_puzzle, Hamingway(goal_puzzle))[1]
     puzzle_count += 1
-    print(str(puzzle_count) + ' -- ' + 'Heming: ' + str(a_star.start(init_puzzle, Hamingway(goal_puzzle))))
+    print(str(puzzle_count) + ' -- ' + 'Heming: ')
 
 puzzle_count = 0
 hamming_withBlank_time = 0
@@ -41,7 +41,7 @@ for init_puzzle in list_init_puzzles:
     a_star = aStar.AStar()
     hamming_time += a_star.start(init_puzzle, Hamingway_WithBlank(goal_puzzle))[1]
     puzzle_count += 1
-    print(str(puzzle_count) + ' -- ' + 'Hamingway_WithBlank: ' + str(a_star.start(init_puzzle, Hamingway_WithBlank(goal_puzzle))))
+    print(str(puzzle_count) + ' -- ' + 'Hamingway_WithBlank: ')
 
 print("Average Manhattan time: " + str(manhattan_time/puzzleCnt))
 print("Average Heming time: " + str(hamming_time/puzzleCnt))
