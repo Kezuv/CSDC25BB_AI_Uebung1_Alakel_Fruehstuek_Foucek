@@ -20,6 +20,22 @@ class Hamingway(Heuristic):
         return misplaced_count
 
 
+class Hamingway_WithBlank(Heuristic):
+    # contains the goal-puzzle
+    def __init__(self, goal_puzzle):
+        self.goal = goal_puzzle
+
+    # calculate the heuristic distance with the count of each puzzle-tile which is in the false position
+    def calculate_heuristic(self, cur):
+        goal_puzzle = self.goal
+        misplaced_count = 0
+        for i in range(len(cur.board)):
+            for j in range(len(cur.board[i])):
+                if goal_puzzle.board[i][j] != cur.board[i][j]:
+                    misplaced_count += 1
+        return misplaced_count
+
+
 class Manhattan(Heuristic):
     # contains the goal-puzzle
     def __init__(self, goal_puzzle):
