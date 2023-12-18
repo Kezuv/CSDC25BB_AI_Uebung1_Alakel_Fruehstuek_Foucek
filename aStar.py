@@ -1,5 +1,6 @@
 import priorityQueue
 from node import Node
+from datetime import datetime
 
 
 class AStar:
@@ -16,6 +17,8 @@ class AStar:
 
         # initialize an array which will be contained all created puzzles, so none of them will be created two times
         previous_puzzles = [init_puzzle]
+
+        start_time = datetime.now()
 
         # while queue is not empty - otherwise there is no way.
         while not self.queue.is_empty():
@@ -37,4 +40,8 @@ class AStar:
                 # increase steps by 1
                 self.steps += 1
         # return step and time counter
+
+        end_time = datetime.now()
+        self.time = end_time - start_time
+
         return self.steps, self.time

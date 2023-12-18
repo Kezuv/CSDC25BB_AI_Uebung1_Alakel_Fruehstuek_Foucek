@@ -55,6 +55,7 @@ class Puzzle:
     def extend(self, previous_puzzles):
         new_leafs = []
 
+
         up_puzzle = self.move_up()
         if up_puzzle is not None and up_puzzle not in previous_puzzles:
             new_leafs.append(up_puzzle)
