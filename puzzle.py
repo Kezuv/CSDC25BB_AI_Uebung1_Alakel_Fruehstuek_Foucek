@@ -7,6 +7,7 @@ class Puzzle:
     def __init__(self, initial_state):
         self.board = initial_state
 
+    # function that allows to iterate over the board.
     def __iter__(self):
         return iter(self.board)
 
@@ -18,51 +19,53 @@ class Puzzle:
         random_puzzle = [numbers[i:i + 3] for i in range(0, 9, 3)]
         return Puzzle(random_puzzle)
 
+    # generates the goal-puzzle
     @staticmethod
     def generate_goal_puzzle():
         return Puzzle([[1, 2, 3], [4, 5, 6], [7, 8, 0]])
 
-    # return up to 4 leafs for Tree with new permutations from the puzzle
+    # return up to 4 leafs for the tree with new permutations from the puzzle which where not created before
     def extend(self, previous_puzzles):
-        newLeafs = []
+        new_leafs = []
 
         up_puzzle = self.move_up()
         if up_puzzle is not None and up_puzzle not in previous_puzzles:
-            newLeafs.append(up_puzzle)
+            new_leafs.append(up_puzzle)
 
         down_puzzle = self.move_down()
         if down_puzzle is not None and down_puzzle not in previous_puzzles:
-            newLeafs.append(down_puzzle)
+            new_leafs.append(down_puzzle)
 
         left_puzzle = self.move_left()
         if left_puzzle is not None and left_puzzle not in previous_puzzles:
-            newLeafs.append(left_puzzle)
+            new_leafs.append(left_puzzle)
 
         right_puzzle = self.move_right()
         if right_puzzle is not None and right_puzzle not in previous_puzzles:
-            newLeafs.append(right_puzzle)
+            new_leafs.append(right_puzzle)
 
-        return newLeafs
+        return new_leafs
 
     # print out the puzzle as a 3x3 matrix
     def display(self):
         for row in self.board:
             print(row)
 
-    # finds the blank field "0" and return coordination
+    # finds the blank field "0" and return the coordination
     def find_blank(self):
         for i, row in enumerate(self.board):
             for j, value in enumerate(row):
                 if value == 0:
                     return i, j
 
+    # find a specific position of a puzzle-tile (number)
     def find_position(self, value):
         for i in range(len(self.board)):
             for j in range(len(self.board[i])):
                 if self.board[i][j] == value:
                     return i, j
 
-    # following switch the tile with "0" with their neighbours and return a new Puzzle.
+    # following functions switch the puzzle-tile with "0" with their neighbours and return a new puzzle-board.
     # If the move is not possible return = none
     def move_up(self):
         tmp_puzzle = Puzzle([row[:] for row in self.board])

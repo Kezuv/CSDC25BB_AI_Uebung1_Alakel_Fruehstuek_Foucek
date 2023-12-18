@@ -1,6 +1,6 @@
 import aStar
-from heuristic import Manhatten
-from heuristic import Hammingway
+from heuristic import Manhattan
+from heuristic import Hamingway
 from puzzle import Puzzle
 
 init_puzzle = Puzzle.generate_random_puzzle()
@@ -9,8 +9,8 @@ init_puzzle = Puzzle.generate_random_puzzle()
 init_puzzle.display()
 goal_puzzle = Puzzle.generate_goal_puzzle()
 goal_puzzle.display()
-heuristic_Hamming = Hammingway(goal_puzzle)
-heuristic_Manhattan = Manhatten(goal_puzzle)
+heuristic_Hamming = Hamingway(goal_puzzle)
+heuristic_Manhattan = Manhattan(goal_puzzle)
 
 a_star = aStar.AStar()
 print(a_star.start(init_puzzle, heuristic_Manhattan))

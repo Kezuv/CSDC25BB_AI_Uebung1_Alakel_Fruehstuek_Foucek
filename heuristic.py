@@ -1,13 +1,15 @@
-from puzzle import Puzzle
+# general declaration from superclass Heuristic
 class Heuristic:
     def calculate_heuristic(self, cur):
         return 0
 
 
-class Hammingway(Heuristic):
+class Hamingway(Heuristic):
+    # contains the goal-puzzle
     def __init__(self, goal_puzzle):
         self.goal = goal_puzzle
 
+    # calculate the heuristic distance with the count of each puzzle-tile which is in the false position
     def calculate_heuristic(self, cur):
         goal_puzzle = self.goal
         misplaced_count = 0
@@ -17,10 +19,14 @@ class Hammingway(Heuristic):
                     misplaced_count += 1
         return misplaced_count
 
-class Manhatten(Heuristic):
+
+class Manhattan(Heuristic):
+    # contains the goal-puzzle
     def __init__(self, goal_puzzle):
         self.goal = goal_puzzle
 
+    # calculate the heuristic distance with a counter of how many steps has each puzzle-tile
+    # to move to their correct position
     def calculate_heuristic(self, cur):
         distance = 0
 
@@ -28,12 +34,13 @@ class Manhatten(Heuristic):
             for j in range(len(self.goal.board[i])):
                 value = self.goal.board[i][j]
                 if value != 0:
-                    # Finde die Position der Zahl im anderen Puzzle
+                    # find the position of the number in the current puzzle
                     x, y = cur.find_position(value)
 
-                    # Berechne die Manhattan-Distanz und addiere sie zur Gesamtdistanz
+                    # calculate the Manhattan distance and add it to the total distance
                     distance += abs(x - i) + abs(y - j)
         return distance
+
 
 class Euklid(Heuristic):
     def __init__(self, goal_puzzle):
