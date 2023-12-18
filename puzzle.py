@@ -104,3 +104,46 @@ class Puzzle:
 # for i in listOfPuzzle:
 #     i.display()
 #     print('---------')
+
+
+"""import numpy as np
+# PuzzleState class
+class PuzzleState:
+    def __init__(self, state, parent=None, action=None, path_cost=0):
+        self.state = np.array(state)
+        self.parent = parent
+        self.action = action
+        self.path_cost = path_cost
+        self.heuristic = 0
+        self.blank_pos = self._find_blank()
+
+    def update_total_cost(self):
+        self.total_cost = self.path_cost + self.heuristic
+
+    def __lt__(self, other):
+        return self.total_cost < other.total_cost
+
+    def __eq__(self, other):
+        return np.array_equal(self.state, other.state)
+
+    def _find_blank(self):
+        return tuple(np.argwhere(self.state == 0)[0])
+
+    def _swap(self, pos1, pos2):
+        new_state = np.copy(self.state)
+        new_state[pos1], new_state[pos2] = new_state[pos2], new_state[pos1]
+        return new_state
+
+    def get_neighbors(self):
+        neighbors = []
+        x, y = self.blank_pos
+        directions = {'up': (-1, 0), 'down': (1, 0), 'left': (0, -1), 'right': (0, 1)}
+
+        for action, (dx, dy) in directions.items():
+            new_x, new_y = x + dx, y + dy
+            if 0 <= new_x < 3 and 0 <= new_y < 3:
+                new_state = self._swap(self.blank_pos, (new_x, new_y))
+                new_node = PuzzleState(new_state, self, action, self.path_cost + 1)
+                neighbors.append(new_node)
+
+        return neighbors"""

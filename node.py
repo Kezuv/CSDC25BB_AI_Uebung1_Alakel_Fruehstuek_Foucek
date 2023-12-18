@@ -19,3 +19,29 @@ class Node:
 
         return self.childNodes
 
+
+"""import numpy as np
+import random
+
+#StateGenerator
+class StateGenerator:
+    @staticmethod
+    def generate_state(seed=42):
+        def is_solvable(state):
+            inv_count = 0
+            flat_state = state.flatten()
+            for i in range(8):
+                for j in range(i + 1, 9):
+                    if flat_state[j] and flat_state[i] and flat_state[i] > flat_state[j]:
+                        inv_count += 1
+            return inv_count % 2 == 0
+
+        random.seed(seed)
+        while True:
+            state = list(range(9))
+            random.shuffle(state)
+            state = np.array(state).reshape((3, 3))
+            if is_solvable(state):
+                return state
+
+"""
