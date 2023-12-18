@@ -20,7 +20,7 @@ class AStar:
         # while queue is not empty - otherwise there is no way.
         while not self.queue.is_empty():
             # get the first item from queue
-            current_node = self.queue.get()
+            current_node = self.queue.pop()
 
             # print stats from that node
             # print('Heurisitc:' + str(current_node.h) + '________ Cost: ' + str(current_node.g) + '_________ Sum:' + str(

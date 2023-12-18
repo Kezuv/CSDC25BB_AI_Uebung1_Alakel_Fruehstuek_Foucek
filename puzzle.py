@@ -28,8 +28,8 @@ class Puzzle:
     def generate_goal_puzzle():
         return Puzzle([[1, 2, 3], [4, 5, 6], [7, 8, 0]])
 
-        # This function returns true
-        # if given 8 puzzle is solvable.
+    # This function returns true
+    # if given 8 puzzle is solvable.
 
     def is_solvable(self):
 

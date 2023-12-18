@@ -6,7 +6,7 @@ from puzzle import Puzzle
 solved_puzzles = 0
 goal_puzzle = Puzzle.generate_goal_puzzle()
 # goal_puzzle.display()
-heuristic_Hamming = Hamingway(goal_puzzle)
+heuristic_Hamingway = Hamingway(goal_puzzle)
 heuristic_Manhattan = Manhattan(goal_puzzle)
 
 while solved_puzzles <= 100:
