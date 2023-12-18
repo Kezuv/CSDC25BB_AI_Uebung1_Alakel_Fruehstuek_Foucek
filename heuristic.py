@@ -13,9 +13,9 @@ class Hamingway(Heuristic):
     def calculate_heuristic(self, cur):
         goal_puzzle = self.goal
         misplaced_count = 0
-        for i in range(len(goal_puzzle.board)):
-            for j in range(len(goal_puzzle.board[i])):
-                if goal_puzzle.board[i][j] != cur.board[i][j]:
+        for i in range(len(cur.board)):
+            for j in range(len(cur.board[i])):
+                if (cur.board[i][j]) and (goal_puzzle.board[i][j] != cur.board[i][j]):
                     misplaced_count += 1
         return misplaced_count
 
