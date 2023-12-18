@@ -23,7 +23,7 @@ class AStar:
             current_node = self.queue.pop()
 
             # print stats from that node
-            # print('Heurisitc:' + str(current_node.h) + '________ Cost: ' + str(current_node.g) + '_________ Sum:' + str(
+            #print('Heurisitc:' + str(current_node.h) + '________ Cost: ' + str(current_node.g) + '_________ Sum:' + str(
             #     current_node.h + current_node.g))
 
             # base case - if h == 0, we reached the goal-puzzle

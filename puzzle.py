@@ -34,20 +34,20 @@ class Puzzle:
     def is_solvable(self):
 
         # Count inversions in given 8 puzzle
-        inv_count = self.get_inv_count()
+        inv_count = self.get_inv_count([j for sub in self.board for j in sub])
 
         # return true if inversion count is even.
         return inv_count % 2 == 0
 
     # A utility function to count
     # inversions in given array 'arr[]'
-    def get_inv_count(self):
+    def get_inv_count(self, arr):
         inv_count = 0
-        flatten_puzzle = [value for row in self.board for value in row]
+        empty_value = 0
 
         for i in range(0, 9):
             for j in range(i + 1, 9):
-                if flatten_puzzle[j] != 0 and flatten_puzzle[i] != 0 and flatten_puzzle[i] > flatten_puzzle[j]:
+                if arr[j] != empty_value and arr[i] != empty_value and arr[i] > arr[j]:
                     inv_count += 1
         return inv_count
 
