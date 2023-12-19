@@ -1,7 +1,7 @@
 import heapq
 
-class Queue:
-    """manages the node queue for A* algorithm"""
+
+class PriorityQueue:
     def __init__(self):
         self.elements = []
 
@@ -13,13 +13,3 @@ class Queue:
 
     def get(self):
         return heapq.heappop(self.elements)[1]
-
-# Example usage
-#queue = Queue()
-#queue.put("node1", 5)
-#queue.put("node2", 3)
-#queue.put("node3", 10)
-
-#while not queue.is_empty():
- #   item = queue.get()
-  #  print(item)

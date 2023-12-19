@@ -1,47 +1,19 @@
-import puzzle as p
-
-
 class Node:
-    childNodes = []
-    curPuzzle = p.Puzzle
-    g = 0
-    h = 0
+    def __init__(self, puzzle, parent=None, path_cost=0, heuristic_cost=0):
+        self.puzzle = puzzle
+        self.parent = parent
+        self.g = path_cost  # Cost from the start node
+        self.h = heuristic_cost  # Heuristic cost
+        self.f = self.g + self.h  # Total cost
 
-    def __init__(self, init_puzzle, init_cost):
-        self.curPuzzle = init_puzzle
-        self.g = init_cost
+    def update_heuristic(self, heuristic_cost):
+        self.h = heuristic_cost
+        self.f = self.g + self.h
 
-    def expand(self, heuristic):
-        nextOptions = self.curPuzzle.extend()
-        for node in nextOptions:
-            self.childNodes.append(Node(node, self.g+1))
-            self.h = heuristic.calculate_heuristic()
+    def __lt__(self, other):
+        return self.f < other.f
 
-        return self.childNodes
+    def __eq__(self, other):
+        return self.puzzle.board == other.puzzle.board
 
-
-"""import numpy as np
-import random
-
-#StateGenerator
-class StateGenerator:
-    @staticmethod
-    def generate_state(seed=42):
-        def is_solvable(state):
-            inv_count = 0
-            flat_state = state.flatten()
-            for i in range(8):
-                for j in range(i + 1, 9):
-                    if flat_state[j] and flat_state[i] and flat_state[i] > flat_state[j]:
-                        inv_count += 1
-            return inv_count % 2 == 0
-
-        random.seed(seed)
-        while True:
-            state = list(range(9))
-            random.shuffle(state)
-            state = np.array(state).reshape((3, 3))
-            if is_solvable(state):
-                return state
-
-"""
+    # Additional methods as required...
