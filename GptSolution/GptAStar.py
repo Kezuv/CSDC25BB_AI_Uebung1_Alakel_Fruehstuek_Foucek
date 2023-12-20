@@ -13,6 +13,8 @@ def _reconstruct_path(node):
 class AStar:
     def __init__(self, heuristic):
         self.heuristic = heuristic
+        self.steps = 0
+        self.depth = 0
 
     def solve(self, initial_puzzle, goal_puzzle):
         start_node = Node(initial_puzzle)
@@ -27,7 +29,8 @@ class AStar:
             current_node = frontier.get()
 
             if current_node.puzzle.is_goal(goal_puzzle):
-                return _reconstruct_path(current_node)
+                self.depth = current_node.g
+                break
 
             explored.add(tuple(map(tuple, current_node.puzzle.board)))
 
@@ -40,7 +43,7 @@ class AStar:
                 neighbor_node.update_heuristic(self.heuristic.calculate(neighbor, goal_puzzle))
 
                 frontier.put(neighbor_node, neighbor_node.f)
-                frontier_states.add(neighbor_state)  # Add new state to the set
+                frontier_states.add(neighbor_state) # Add new state to the set
 
-        return None
-
+            self.steps += 1
+        return self.steps, self.depth

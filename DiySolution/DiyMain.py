@@ -1,36 +1,52 @@
-from DiySolution.DiyHeuristic import Manhattan, Hamingway, Hamingway_WithBlank
+import time
+from DiySolution.DiyHeuristic import Manhattan, Hamming, Haming_WithBlank, Euclidean
 from DiySolution.DiyPuzzle import Puzzle
 from DiySolution.DiyAStar import AStar
 
 
-# goal_puzzle.display()
+def start(seed, puzzle_count, heuristic_function_name):
+    step_counter_for_each_puzzle = []
+    average_step_counter = 0
+    depth_for_each_puzzle = []
+    average_depth = 0
+    time_for_each_puzzle = []
+    average_time = 0.0
 
-def start(seed, puzzle_count):
     goal_puzzle = Puzzle.generate_goal_puzzle()
 
     list_init_puzzles = Puzzle.generate_random_puzzle(seed, puzzle_count)
 
+    if heuristic_function_name == "Hamming":
+        heuristic_function = Hamming(goal_puzzle)
+    if heuristic_function_name == "Manhattan":
+        heuristic_function = Manhattan(goal_puzzle)
+    if heuristic_function_name == "Euclidean":
+        heuristic_function = Euclidean(goal_puzzle)
 
-    manhattan_time = 0
     for init_puzzle in list_init_puzzles:
         a_star = AStar()
-        manhattan_time += a_star.start(init_puzzle, Manhattan(goal_puzzle))[1]
-        print(str(puzzle_count) + ' -- ' + 'Manhattan:')
-        #print("{} -- Manhattan: {}".format(puzzle_count,init_puzzle))
 
-    hamming_time = 0
-    for init_puzzle in list_init_puzzles:
-        a_star = AStar()
-        hamming_time += a_star.start(init_puzzle, Hamingway(goal_puzzle))[1]
-        print(str(puzzle_count) + ' -- ' + 'Heming: ')
+        start_time = time.time()
+        current_step, current_depth = a_star.solve(init_puzzle, heuristic_function)
+        end_time = time.time()
 
-    hamming_withBlank_time = 0
-    for init_puzzle in list_init_puzzles:
-        a_star = AStar()
-        hamming_time += a_star.start(init_puzzle, Hamingway_WithBlank(goal_puzzle))[1]
-        puzzle_count += 1
-        print(str(puzzle_count) + ' -- ' + 'Hamingway_WithBlank: ')
+        process_time = end_time - start_time
+        time_for_each_puzzle.append(process_time)
+        average_time += process_time
 
-    print("Average Manhattan time: " + str(manhattan_time/puzzle_count))
-    print("Average Heming time: " + str(hamming_time/puzzle_count))
-    print("Average Hamingway_WithBlank time: " + str(hamming_withBlank_time/puzzle_count))
+        step_counter_for_each_puzzle.append(current_step)
+        average_step_counter += current_step
+
+        depth_for_each_puzzle.append(current_depth)
+        average_depth += current_depth
+
+    average_time /= len(list_init_puzzles)
+    average_step_counter /= len(list_init_puzzles)
+    average_depth /= len(list_init_puzzles)
+
+    return (step_counter_for_each_puzzle,
+            average_step_counter,
+            depth_for_each_puzzle,
+            average_depth,
+            time_for_each_puzzle,
+            average_time)

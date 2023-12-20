@@ -4,7 +4,7 @@ class Heuristic:
         return 0
 
 
-class Hamingway(Heuristic):
+class Hamming(Heuristic):
     # contains the goal-puzzle
     def __init__(self, goal_puzzle):
         self.goal = goal_puzzle
@@ -20,7 +20,7 @@ class Hamingway(Heuristic):
         return misplaced_count
 
 
-class Hamingway_WithBlank(Heuristic):
+class Haming_WithBlank(Heuristic):
     # contains the goal-puzzle
     def __init__(self, goal_puzzle):
         self.goal = goal_puzzle
@@ -58,9 +58,9 @@ class Manhattan(Heuristic):
         return distance
 
 
-class Euklid(Heuristic):
+class Euclidean(Heuristic):
     def __init__(self, goal_puzzle):
         self.goal = goal_puzzle
 
     def calculate_heuristic(self, cur):
-        return 2
+        return 0
