@@ -17,12 +17,17 @@ class Puzzle:
 
     # generates a random puzzle with values from 0 to 9
     @staticmethod
-    def generate_random_puzzle(seed=None):
-        numbers = list(range(9))
-        random.seed(seed)
-        random.shuffle(numbers)
-        random_puzzle = [numbers[i:i + 3] for i in range(0, 9, 3)]
-        return Puzzle(random_puzzle)
+    def generate_random_puzzle(seed, puzzle_count):
+        generated_puzzles = []
+        while generated_puzzles.__len__() < puzzle_count:
+            numbers = list(range(9))
+            random.seed(seed)
+            random.shuffle(numbers)
+            temp_puzzle = Puzzle([numbers[i:i + 3] for i in range(0, 9, 3)])
+            if temp_puzzle.is_solvable():
+                generated_puzzles.append(temp_puzzle)
+            seed += 1
+        return generated_puzzles
 
     # generates the goal-puzzle
     @staticmethod

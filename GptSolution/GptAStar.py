@@ -1,5 +1,5 @@
-from GptPriorityQueue import PriorityQueue
-from GptNode import Node
+from GptSolution.GptPriorityQueue import PriorityQueue
+from GptSolution.GptNode import Node
 
 
 def _reconstruct_path(node):

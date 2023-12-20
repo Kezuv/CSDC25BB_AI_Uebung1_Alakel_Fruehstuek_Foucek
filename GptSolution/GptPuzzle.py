@@ -1,5 +1,6 @@
 import random
 
+
 class Puzzle:
     def __init__(self, board):
         self.board = board
@@ -52,11 +53,14 @@ class Puzzle:
         return inversions % 2 == 0
 
     @staticmethod
-    def generate_random_puzzle():
-        while True:
+    def generate_random_puzzle(seed, puzzle_count):
+        generated_puzzles = []
+        while generated_puzzles.__len__() < puzzle_count:
             numbers = list(range(9))
+            random.seed(seed)
             random.shuffle(numbers)
             temp_puzzle = Puzzle([numbers[i:i + 3] for i in range(0, 9, 3)])
             if temp_puzzle.is_solvable():
-                return temp_puzzle
-
+                generated_puzzles.append(temp_puzzle)
+            seed += 1
+        return generated_puzzles

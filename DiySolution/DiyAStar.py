@@ -1,7 +1,6 @@
-import DiyPriorityQueue
-from DiyNode import Node
 import time
-from DiyPriorityQueue import PriorityQueue
+from DiySolution.DiyNode import Node
+from DiySolution.DiyPriorityQueue import PriorityQueue
 
 
 class AStar:
