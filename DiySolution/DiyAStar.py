@@ -1,7 +1,7 @@
-import priorityQueue
-from node import Node
-from datetime import datetime
+import DiyPriorityQueue
+from DiyNode import Node
 import time
+from DiyPriorityQueue import PriorityQueue
 
 
 class AStar:
@@ -9,7 +9,7 @@ class AStar:
     def __init__(self):
         self.steps = 0
         self.time = 0
-        self.queue = priorityQueue.PriorityQueue()
+        self.queue = PriorityQueue()
 
     # start the aStar algorythm with a puzzle to solve, and a heuristic function.
     def start(self, init_puzzle, heuristic):

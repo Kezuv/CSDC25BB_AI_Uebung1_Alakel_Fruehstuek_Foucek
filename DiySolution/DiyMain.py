@@ -1,6 +1,7 @@
-import aStar
-from heuristic import Manhattan, Hamingway, Hamingway_WithBlank
-from puzzle import Puzzle
+import DiyAStar
+from DiyHeuristic import Manhattan, Hamingway, Hamingway_WithBlank
+from DiyPuzzle import Puzzle
+from DiyAStar import AStar
 
 puzzleCnt = 10
 solved_puzzles = 0
@@ -19,7 +20,7 @@ puzzle_count = 0
 manhattan_time = 0
 for init_puzzle in list_init_puzzles:
     # init_puzzle.display()
-    a_star = aStar.AStar()
+    a_star = AStar()
     puzzle_count += 1
     manhattan_time += a_star.start(init_puzzle, Manhattan(goal_puzzle))[1]
     print(str(puzzle_count) + ' -- ' + 'Manhattan:')
@@ -29,7 +30,7 @@ puzzle_count = 0
 hamming_time = 0
 for init_puzzle in list_init_puzzles:
     # init_puzzle.display()
-    a_star = aStar.AStar()
+    a_star = AStar()
     hamming_time += a_star.start(init_puzzle, Hamingway(goal_puzzle))[1]
     puzzle_count += 1
     print(str(puzzle_count) + ' -- ' + 'Heming: ')
@@ -38,7 +39,7 @@ puzzle_count = 0
 hamming_withBlank_time = 0
 for init_puzzle in list_init_puzzles:
     # init_puzzle.display()
-    a_star = aStar.AStar()
+    a_star = AStar()
     hamming_time += a_star.start(init_puzzle, Hamingway_WithBlank(goal_puzzle))[1]
     puzzle_count += 1
     print(str(puzzle_count) + ' -- ' + 'Hamingway_WithBlank: ')
