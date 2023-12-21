@@ -9,11 +9,11 @@ from DiySolution import DiyMain
 # average time
 def main():
     seed = 1
-    puzzle_count = 10
+    puzzle_count = 50
 
-    start_one_heuristic(seed, puzzle_count, "Manhattan")
+    #start_one_heuristic(seed, puzzle_count, "Manhattan")
     start_one_heuristic(seed, puzzle_count, "Hamming")
-    start_one_heuristic(seed, puzzle_count, "Euclidean")
+    # start_one_heuristic(seed, puzzle_count, "Euclidean")
 
 def start_one_heuristic(seed, puzzle_count, heuristic_function):
     print("==========================================================")
@@ -29,12 +29,12 @@ def start_one_heuristic(seed, puzzle_count, heuristic_function):
     print(heuristic_function, " GPT steps for each puzzle:", step_counter_for_each_puzzle)
     print(heuristic_function, " GPT average steps", average_step_counter)
     print(heuristic_function, " GPT depth for each puzzle:", depth_for_each_puzzle)
-    print(heuristic_function, " GPT average depth:", depth_for_each_puzzle)
+    print(heuristic_function, " GPT average depth:", average_depth)
     print(heuristic_function, " GPT time for each puzzle:", time_for_each_puzzle)
     print(heuristic_function, " GPT average time:", average_time)
 
     print("==========================================================")
-    print("                DIY GPT", heuristic_function)
+    print("                DIY", heuristic_function)
     print("==========================================================")
     (step_counter_for_each_puzzle,
      average_step_counter,
@@ -46,7 +46,7 @@ def start_one_heuristic(seed, puzzle_count, heuristic_function):
     print(heuristic_function, " DIY steps for each puzzle:", step_counter_for_each_puzzle)
     print(heuristic_function, " DIY average steps", average_step_counter)
     print(heuristic_function, " DIY depth for each puzzle:", depth_for_each_puzzle)
-    print(heuristic_function, " DIY average depth:", depth_for_each_puzzle)
+    print(heuristic_function, " DIY average depth:", average_depth)
     print(heuristic_function, " DIY time for each puzzle:", time_for_each_puzzle)
     print(heuristic_function, " DIY average time:", average_time)
 

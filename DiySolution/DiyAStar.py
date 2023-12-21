@@ -15,7 +15,7 @@ class AStar:
         self.queue.put(init_node, 0, init_node.h)
 
         # initialize an array which will be contained all created puzzles, so none of them will be created two times
-        previous_puzzles = [init_puzzle]
+        previous_puzzles = [init_puzzle.board]
 
         # while queue is not empty - otherwise there is no way.
         while not self.queue.is_empty():
@@ -27,11 +27,11 @@ class AStar:
                 self.depth = current_node.g
                 break
             else:
-                previous_puzzles.append(current_node.curPuzzle)
+                previous_puzzles.append(current_node.curPuzzle.board)
                 # create the child-nodes and put them in queue
                 new_leafs = current_node.expand(heuristic)
                 for leaf in new_leafs:
-                    if leaf.curPuzzle in previous_puzzles:
+                    if leaf.curPuzzle.board in previous_puzzles:
                         continue
                     self.queue.put(leaf, leaf.g + leaf.h, leaf.h)
                 # increase steps by 1

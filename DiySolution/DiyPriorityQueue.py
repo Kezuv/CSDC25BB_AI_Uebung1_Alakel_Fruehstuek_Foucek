@@ -1,3 +1,4 @@
+import bisect
 class PriorityQueue:
     # priority queue contains a array
     def __init__(self):
@@ -9,17 +10,23 @@ class PriorityQueue:
 
     # put items (nodes) with their priority (total cost) in the correct index
     def put(self, node, priority, heuristic_value):
-        entry = (node, priority, heuristic_value)
-        index = 0
+        entry = (priority, heuristic_value, node)
+        # index = 0
 
         # find the position where the element should be inserted
-        while index < len(self.elements) and (priority > self.elements[index][1] or heuristic_value > self.elements[index][2]):
-            index += 1
+        # Causes time problems
+        # while index < len(self.elements) and (priority > self.elements[index][1] or heuristic_value > self.elements[index][2]):
+        #    index += 1
+
+        # while index < len(self.elements):
+        #    if self.elements[index][1] < priority:
+        #            index += 1
 
         # Insert the element at the found position
-        self.elements.insert(index, entry)
+        # self.elements.insert(index, entry)
 
+        bisect.insort(self.elements, entry)
     # return the first node in queue.
     def pop(self):
         if not self.is_empty():
-            return self.elements.pop(0)[0]
+            return self.elements.pop(0)[2]

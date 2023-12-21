@@ -12,8 +12,8 @@ class Puzzle:
         return iter(self.board)
 
     # made puzzles comparable
-    def __eq__(self, other):
-        return self.board == other.board
+    # def __eq__(self, other):
+    #     return self.board == other.board
 
     # generates a random puzzle with values from 0 to 9
     @staticmethod
