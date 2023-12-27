@@ -30,11 +30,20 @@ class AStar:
                 previous_puzzles.append(current_node.curPuzzle.board)
                 # create the child-nodes and put them in queue
                 new_leafs = current_node.expand(heuristic)
+                # for leaf in new_leafs:
+                #     if leaf.curPuzzle.board in previous_puzzles:
+                #         continue
                 for leaf in new_leafs:
-                    if leaf.curPuzzle.board in previous_puzzles:
-                        continue
-                    self.queue.put(leaf, leaf.g + leaf.h, leaf.h)
+                    if self.is_leaf_new(leaf, previous_puzzles) is not True:
+                        self.queue.put(leaf, leaf.g + leaf.h, leaf.h)
                 # increase steps by 1
                 self.steps += 1
 
         return self.steps, self.depth
+
+    def is_leaf_new(self, leaf, previous_puzzles):
+        found = False
+        if leaf.curPuzzle.board in previous_puzzles:
+            found = True
+
+        return found

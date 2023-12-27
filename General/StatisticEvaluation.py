@@ -8,12 +8,12 @@ from DiySolution import DiyMain
 # time for each puzzle
 # average time
 def main():
-    seed = 1
-    puzzle_count = 50
+    seed = 11
+    puzzle_count = 5
 
-    #start_one_heuristic(seed, puzzle_count, "Manhattan")
+    start_one_heuristic(seed, puzzle_count, "Manhattan")
     start_one_heuristic(seed, puzzle_count, "Hamming")
-    # start_one_heuristic(seed, puzzle_count, "Euclidean")
+    start_one_heuristic(seed, puzzle_count, "Euclidean")
 
 def start_one_heuristic(seed, puzzle_count, heuristic_function):
     print("==========================================================")

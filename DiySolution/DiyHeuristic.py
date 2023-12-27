@@ -1,4 +1,7 @@
 # general declaration from superclass Heuristic
+from math import sqrt
+
+
 class Heuristic:
     def calculate_heuristic(self, cur):
         return 0
@@ -63,4 +66,14 @@ class Euclidean(Heuristic):
         self.goal = goal_puzzle
 
     def calculate_heuristic(self, cur):
-        return 0
+        total_distance = 0
+        for goal_x in range(len(self.goal.board)):
+            for goal_y in range(len(self.goal.board[goal_x])):
+                value = self.goal.board[goal_x][goal_y]
+                if value != 0:
+                    for current_x in range(len(cur.board)):
+                        for current_y in range(len(cur.board[current_x])):
+                            if cur.board[current_x][current_y] == value:
+                                total_distance += sqrt((current_x - goal_x) ** 2 + (current_y - goal_y) ** 2)
+                                break
+        return total_distance
