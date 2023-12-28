@@ -2,8 +2,6 @@ import time
 from GptSolution.GptPuzzle import Puzzle
 from GptSolution.GptAStar import AStar
 from GptSolution.GptHeuristic import HammingDistance, ManhattanDistance, EuclideanDistance
-from tqdm import tqdm
-
 
 def start(seed, puzzle_count, heuristic_function_name):
     step_counter_for_each_puzzle = []
