@@ -3,7 +3,7 @@ import random
 
 class Puzzle:
 
-    # puzzle contains a 2-D Array with values from 0 to 9
+    """puzzle contains a 2-D Array with values from 0 to 9"""
     def __init__(self, initial_state):
         self.board = initial_state
 
@@ -15,9 +15,10 @@ class Puzzle:
     # def __eq__(self, other):
     #     return self.board == other.board
 
-    # generates a random puzzle with values from 0 to 9
+
     @staticmethod
     def generate_random_puzzle(seed, puzzle_count):
+        """generates a random puzzle with values from 0 to 9"""
         generated_puzzles = []
         while generated_puzzles.__len__() < puzzle_count:
             numbers = list(range(9))
@@ -29,9 +30,10 @@ class Puzzle:
             seed += 1
         return generated_puzzles
 
-    # generates the goal-puzzle
+
     @staticmethod
     def generate_goal_puzzle():
+        """generates the goal-puzzle"""
         return Puzzle([[1, 2, 3], [4, 5, 6], [7, 8, 0]])
 
     # This function returns true

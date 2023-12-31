@@ -5,6 +5,7 @@ from DiySolution.DiyAStar import AStar
 
 
 def start(seed, puzzle_count, heuristic_function_name):
+    """Declares the parameters for the puzzle analysis and runs the solving method"""
     step_counter_for_each_puzzle = []
     average_step_counter = 0
     depth_for_each_puzzle = []
