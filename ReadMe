@@ -6,10 +6,10 @@ Alakel Ibrahim, Fuehstueck Manuel, Foucek Armin
 The main method is in StatisticEvaluation.py.
 
 Please define a seed and an amount of puzzles that should be solved in the main method.
-The puzzles will be created by a random puzzle generator, wich outcome can be influenced by the seed.
+The puzzles will be created by a random puzzle generator, which outcome is influenced by the seed.
 
-The programm will start the heuristic function one by one for each solution. Starting by Hamming, than Euclidean and
-last but not least Manhattan.
+The program will start the heuristic function one by one for each solution. Starting by Hamming, than Euclidean and
+last but not least, Manhattan.
 
 Please make sure that the project directory is declared as your working directory.
 A directory statisticOutputs/Seed_X_PuzzleCount_Y should be created in the project
