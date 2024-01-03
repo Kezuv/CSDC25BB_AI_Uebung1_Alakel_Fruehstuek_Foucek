@@ -1,12 +1,24 @@
 from math import sqrt
+from GptSolution.GptPuzzle import Puzzle
 
 
 class Heuristic:
+    """Holds the heuristic functions for distance calculations"""
     def calculate(self, puzzle, goal):
+        """calculates the heuristic distance from a given puzzle to the given goal puzzle
+        :param puzzle: the puzzle that is beeing calculated
+        :type puzzle: Puzzle
+        :param goal: the goal puzzle
+        :type goal: int[][]
+        :returns: heuristic distance
+        :rtype: int
+        """
         raise NotImplementedError("This method should be overridden by subclasses")
 
 
 class HammingDistance(Heuristic):
+    """Holds the heuristic functions for hamming-distance calculations"""
+    # calculate the heuristic distance by the count of wrong placed tiles
     def calculate(self, puzzle, goal):
         mismatch = 0
         for i in range(3):
@@ -17,6 +29,8 @@ class HammingDistance(Heuristic):
 
 
 class ManhattanDistance(Heuristic):
+    """Holds the heuristic functions for manhattan-distance calculations"""
+    # calculate the heuristic distance by only allowing horizontal and vertical moves
     def calculate(self, puzzle, goal):
         total_distance = 0
         for i in range(3):
@@ -33,6 +47,8 @@ class ManhattanDistance(Heuristic):
 
 
 class EuclideanDistance(Heuristic):
+    """Holds the heuristic functions for euclidean-distance calculations"""
+    # calculate the heuristic distance by using the pythagoras theorem
     def calculate(self, puzzle, goal):
         total_distance = 0
         for i in range(3):
