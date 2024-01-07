@@ -1,6 +1,6 @@
 import bisect
 class PriorityQueue:
-    # priority queue contains a array
+    """Priority queue contains an array"""
     def __init__(self):
         self.elements = []
 
@@ -8,8 +8,9 @@ class PriorityQueue:
     def is_empty(self):
         return len(self.elements) == 0
 
-    # put items (nodes) with their priority (total cost) in the correct index
+
     def put(self, node, priority, heuristic_value):
+        """Puts items (nodes) with their priority (total cost) in the correct index"""
         entry = (priority, heuristic_value, node)
         # index = 0
 

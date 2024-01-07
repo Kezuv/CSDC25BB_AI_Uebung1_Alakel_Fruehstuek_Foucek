@@ -1,10 +1,12 @@
 import time
-from DiySolution.DiyHeuristic import Manhattan, Hamming, Haming_WithBlank, Euclidean
-from DiySolution.DiyPuzzle import Puzzle
+
 from DiySolution.DiyAStar import AStar
+from DiySolution.DiyHeuristic import Manhattan, Hamming, Euclidean
+from DiySolution.DiyPuzzle import Puzzle
 
 
 def start(seed, puzzle_count, heuristic_function_name):
+    """Declares the parameters for the puzzle analysis and runs the solving method"""
     step_counter_for_each_puzzle = []
     average_step_counter = 0
     depth_for_each_puzzle = []
