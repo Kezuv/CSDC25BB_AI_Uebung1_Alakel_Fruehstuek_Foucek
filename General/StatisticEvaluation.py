@@ -9,7 +9,7 @@ import sys
 
 
 def main():
-    start_statistic_evaluation(1, 10)
+    start_statistic_evaluation(42, 100)
 
 
 def start_statistic_evaluation(seed, puzzle_count):
