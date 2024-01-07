@@ -78,6 +78,8 @@ class Euclidean(Heuristic):
                     for current_x in range(len(cur.board)):
                         for current_y in range(len(cur.board[current_x])):
                             if cur.board[current_x][current_y] == value:
-                                total_distance += sqrt((current_x - goal_x) ** 2 + (current_y - goal_y) ** 2)
+                                total_distance += sqrt(
+                                    (current_x - goal_x) ** 2 + (current_y - goal_y) ** 2
+                                )
                                 break
         return total_distance

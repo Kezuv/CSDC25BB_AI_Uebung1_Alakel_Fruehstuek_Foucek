@@ -1,7 +1,8 @@
 import time
-from DiySolution.DiyHeuristic import Manhattan, Hamming, Haming_WithBlank, Euclidean
-from DiySolution.DiyPuzzle import Puzzle
+
 from DiySolution.DiyAStar import AStar
+from DiySolution.DiyHeuristic import Manhattan, Hamming, Euclidean
+from DiySolution.DiyPuzzle import Puzzle
 
 
 def start(seed, puzzle_count, heuristic_function_name):

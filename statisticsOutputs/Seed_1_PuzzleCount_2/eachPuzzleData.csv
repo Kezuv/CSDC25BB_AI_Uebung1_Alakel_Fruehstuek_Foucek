@@ -1,7 +1,0 @@
-Heuristic,Puzzle Number,GPT Steps,DIY Steps,GPT Depth,DIY Depth,GPT Time,DIY Time
-Manhattan,1,761,501,24,24,22,24
-Manhattan,2,925,417,21,21,25,19
-Hamming,1,13073,13184,24,24,338,10805
-Hamming,2,5597,4233,21,21,103,1083
-Euclidean,1,2134,2210,24,24,63,342
-Euclidean,2,1280,1295,21,21,41,119

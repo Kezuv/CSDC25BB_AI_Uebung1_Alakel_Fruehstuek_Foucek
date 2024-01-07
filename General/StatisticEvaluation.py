@@ -1,19 +1,17 @@
 import csv
-import io
-
-from GptSolution import GptMain
-from DiySolution import DiyMain
 import datetime
 import os
-import sys
+
+from DiySolution import DiyMain
+from GptSolution import GptMain
 
 
 def main():
-    start_statistic_evaluation(42, 100)
+    start_statistic_evaluation(1, 100)
 
 
 def start_statistic_evaluation(seed, puzzle_count):
-    output_directory = f"../statisticsOutputs/Seed_{seed}_PuzzleCount_{puzzle_count}"
+    output_directory = f"statisticsOutputs/Seed_{seed}_PuzzleCount_{puzzle_count}"
 
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
